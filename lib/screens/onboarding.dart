@@ -14,7 +14,7 @@ class OnBoardingScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Constants.kBlackColor,
-      body: Container(
+      body: SizedBox(
         width: screenWidth,
         height: screenHeight,
         child: Stack(
@@ -25,13 +25,13 @@ class OnBoardingScreen extends StatelessWidget {
               child: Container(
                 height: 166,
                 width: 166,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Constants.kPinkColor,
                 ),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 200, sigmaY: 200),
-                  child: Container(
+                  child: const SizedBox(
                     height: 166,
                     width: 166,
                   ),
@@ -44,44 +44,69 @@ class OnBoardingScreen extends StatelessWidget {
               child: Container(
                 height: 200,
                 width: 200,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Constants.kGreenColor,
                 ),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 200, sigmaY: 200),
-                  child: Container(
+                  child: const SizedBox(
                     height: 200,
                     width: 200,
                   ),
                 ),
               ),
             ),
-            Column(
-              children: [
-                SizedBox(
-                  height: screenHeight * 0.07,
-                ),
-                CustomOutline(
-                  strokeWidth: 4,
-                  radius: screenWidth * .8,
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      Constants.kPinkColor,
-                      Constants.kPinkColor.withOpacity(0),
-                      Constants.kGreenColor.withOpacity(.1),
-                      Constants.kGreenColor,
-                    ],
-                    stops: [.2, .4, .6, 1],
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: screenHeight * 0.07,
                   ),
-                  width: screenWidth * .8,
-                  height: screenHeight * .8,
-                  padding: EdgeInsets.all(4),
-                  child: Container(),
-                ),
-              ],
+                  CustomOutline(
+                    padding: const EdgeInsets.all(8),
+                    strokeWidth: 4,
+                    radius: screenWidth * .8,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Constants.kPinkColor,
+                        Constants.kPinkColor.withOpacity(0),
+                        Constants.kGreenColor.withOpacity(.1),
+                        Constants.kGreenColor,
+                      ],
+                      stops: const [0.2, 0.4, 0.6, 1],
+                    ),
+                    // هنا بندى ال width و height نفس الـ screen width عشان يدينا الشكل الدائرى
+                    width: screenWidth * .8,
+                    height: screenWidth * .8,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/img-onboarding.png'),
+                          fit: BoxFit.cover,
+                          alignment: Alignment.bottomLeft,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenHeight * .09,
+                  ),
+                  Text(
+                    'Welcome to Movie App',
+                    style: TextStyle(
+                      fontSize: screenWidth * .05,
+                      fontWeight: FontWeight.bold,
+                      color: Constants.kWhiteColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
