@@ -98,11 +98,24 @@ class OnBoardingScreen extends StatelessWidget {
                     height: screenHeight * .09,
                   ),
                   Text(
-                    'Welcome to Movie App',
+                    'Watch Movies in \n Virtual Reality',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: screenWidth * .05,
-                      fontWeight: FontWeight.bold,
-                      color: Constants.kWhiteColor,
+                      fontSize: screenHeight <= 660 ? 30 : 48,
+                      fontWeight: FontWeight.w700,
+                      color: Constants.kWhiteColor.withOpacity(.8),
+                    ),
+                  ),
+                  SizedBox(
+                    height: screenHeight * .05,
+                  ),
+                  Text(
+                    'Download and Watch Offline \n wherever you are',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: screenHeight <= 660 ? 12 : 16,
+                      fontWeight: FontWeight.w700,
+                      color: Constants.kWhiteColor.withOpacity(.75),
                     ),
                   ),
                 ],
